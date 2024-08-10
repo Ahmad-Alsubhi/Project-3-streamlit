@@ -32,7 +32,7 @@ st.altair_chart(chart, use_container_width=True)
 
 data = pd.DataFrame({
     'labels': ['Maid Room', 'Driver Room'],
-    'sizes': [df2['maidRoom'].sum(), df2['driverRoom'].sum()]
+    'sizes': [df['maidRoom'].sum(), df['driverRoom'].sum()]
 })
 
 # إنشاء مخطط دائري باستخدام Altair
