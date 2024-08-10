@@ -30,3 +30,13 @@ chart = alt.Chart(data).mark_arc().encode(
 # Display the chart in Streamlit
 st.altair_chart(chart, use_container_width=True)
 
+chart = alt.Chart(df).mark_arc().encode(
+    theta=alt.Theta(field='sizes', type='quantitative'),
+    color=alt.Color(field='labels', type='nominal'),
+    tooltip=[alt.Tooltip(field='labels', type='nominal'), alt.Tooltip(field='sizes', type='quantitative')]
+).properties(
+    title='Maid Room and Driver Room'
+)
+
+# عرض المخطط في Streamlit
+st.altair_chart(chart, use_container_width=True)
