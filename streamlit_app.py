@@ -105,3 +105,27 @@ pie_chart = alt.Chart(duplex_counts).mark_arc().encode(
     outerRadius=150
 )
 st.altair_chart(pie_chart, use_container_width=True)
+
+
+st.html(
+    "<h1>السؤال الخامس ؟ </h1>"
+    "<p>شرح</p>"
+)
+property_age_lt_10 = len(df[df['propertyAge'] < 10])
+property_age_gt_20 = len(df[df['propertyAge'] > 20])
+data = {
+    'Property Age Group': ['Property Age < 10', 'Property Age > 20'],
+    'Count': [property_age_lt_10, property_age_gt_20]
+}
+df_counts = pd.DataFrame(data)
+bar_chart = alt.Chart(df_counts).mark_bar().encode(
+    x=alt.X('Property Age Group:N', title='Property Age'),
+    y=alt.Y('Count:Q', title='Count'),
+    color='Property Age Group:N',
+    tooltip=['Property Age Group:N', 'Count:Q']  # عرض التفاصيل عند التفاعل مع الأعمدة
+).properties(
+    title='Comparison of Property Age',
+    width=400,
+    height=300
+)
+st.altair_chart(bar_chart, use_container_width=True)
