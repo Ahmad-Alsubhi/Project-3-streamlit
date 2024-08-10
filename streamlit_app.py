@@ -6,7 +6,7 @@ import numpy as np
 import altair as alt
 raw_url ='https://raw.githubusercontent.com/AbdullahSoli/Project-3-streamlit/main/cleaned_RiyadhVillasAqar2.csv'
 #df= pd.read_csv('cleaned_RiyadhVillasAqar.csv')
-df= pd.read_csv('raw_url')
+df= pd.read_csv(raw_url)
 st.write('Hello world!')
 st.write('Hello world!gjgjgjg')
 
