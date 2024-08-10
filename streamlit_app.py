@@ -148,7 +148,10 @@ st.altair_chart(pie_chart, use_container_width=True)
 
 
 
-
+st.html(
+    "<h1>السؤال السادس ؟ </h1>"
+    "<p>شرح</p>"
+)
 
 property_counts = df['location'].value_counts().reset_index()
 property_counts.columns = ['location', 'count']
