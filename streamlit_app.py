@@ -16,4 +16,17 @@ st.html(
     "<p><span style='text-decoration: line-through double red;'>Oops</span>!</p>"
 )
 
+data = pd.DataFrame({
+    'labels': ['A', 'B', 'C', 'D'],
+    'sizes': [15, 30, 45, 10]
+})
+
+# Create an Altair pie chart
+chart = alt.Chart(data).mark_arc().encode(
+    theta=alt.Theta(field='sizes', type='quantitative'),
+    color=alt.Color(field='labels', type='nominal')
+).properties(title='Pie Chart Example')
+
+# Display the chart in Streamlit
+st.altair_chart(chart, use_container_width=True)
 
