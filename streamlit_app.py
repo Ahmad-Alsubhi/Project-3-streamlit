@@ -122,10 +122,24 @@ bar_chart = alt.Chart(df_counts).mark_bar().encode(
     x=alt.X('Property Age Group:N', title='Property Age'),
     y=alt.Y('Count:Q', title='Count'),
     color='Property Age Group:N',
-    tooltip=['Property Age Group:N', 'Count:Q']  # عرض التفاصيل عند التفاعل مع الأعمدة
+    tooltip=['Property Age Group:N', 'Count:Q']  
 ).properties(
-    title='Comparison of Property Age',
+    title='توزيع العقارات حسب العمر ',
     width=400,
     height=300
 )
 st.altair_chart(bar_chart, use_container_width=True)
+pie_chart = alt.Chart(df_counts).mark_arc().encode(
+    theta=alt.Theta(field='Count', type='quantitative', title='Count'),
+    color=alt.Color(field='Property Age Group', type='nominal', title='Property Age Group'),
+    tooltip=['Property Age Group:N', 'Count:Q']  # عرض التفاصيل عند التفاعل مع القطاعات
+).properties(
+    title='توزيع العقارات حسب العمر',
+    width=400,
+    height=400
+).configure_arc(
+    outerRadius=150
+)
+
+# عرض الرسم البياني في Streamlit
+st.altair_chart(pie_chart, use_container_width=True)
