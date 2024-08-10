@@ -18,25 +18,4 @@ st.html(
 )
 
 
-#import plotly.graph_objects as go
-import streamlit as st
-import plotly.express as go
-
-# Assume df2 is your DataFrame and 'duplex' is the column of interest
-duplex_counts = df['duplex'].value_counts()
-
-# Create the pie chart with Plotly
-fig = go.Figure(data=[go.Pie(labels=duplex_counts.index, values=duplex_counts.values, hole=0.3)])
-
-# Update layout for better appearance
-fig.update_layout(
-    title_text='Distribution of Duplex Values',
-    annotations=[dict(text='Duplex', x=0.5, y=0.5, font_size=20, showarrow=False)]
-)
-
-# Display the chart in a Streamlit app
-st.plotly_chart(fig)
-# Display the chart
-#st.plotly_chart(fig)
-
 
