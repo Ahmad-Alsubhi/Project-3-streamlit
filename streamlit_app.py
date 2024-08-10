@@ -160,21 +160,21 @@ donut_chart = alt.Chart(top_10_locations).mark_arc(innerRadius=100).encode(
     color=alt.Color(field='location', type='nominal', title='Location'),
     tooltip=['location:N', 'count:Q']  # عرض التفاصيل عند التفاعل مع القطاعات
 ).properties(
-    title='اعلى عشر مناطق من حيث عدد العقارات',
+    title='توزيع المنازل حسب المناطق',
     width=400,
     height=400
 ).configure_arc(
     outerRadius=150
 )
 
-# إنشاء رسم بياني شريطي (Bar Chart) باستخدام Altair
+
 bar_chart = alt.Chart(top_10_locations).mark_bar().encode(
     x=alt.X('location:N', title='Location', sort='-y'),
     y=alt.Y('count:Q', title='Count'),
     color='location:N',
-    tooltip=['location:N', 'count:Q']  # عرض التفاصيل عند التفاعل مع الأعمدة
+    tooltip=['location:N', 'count:Q']  
 ).properties(
-    title='اعلى عشر مناطق من حيث عدد العقارات',
+    title='توزيع المنازل حيب المناطق',
     width=400,
     height=300
 )
