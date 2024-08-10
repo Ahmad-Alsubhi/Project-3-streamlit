@@ -36,6 +36,6 @@ fig.update_layout(
 # Display the chart in a Streamlit app
 st.plotly_chart(fig)
 # Display the chart
-plt.show()
+#st.plotly_chart(fig)
 
 
