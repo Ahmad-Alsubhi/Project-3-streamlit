@@ -11,15 +11,12 @@ st.write('Hello world!')
 
 st.html(
     "<h1>الفلل في الرياض </h1>"
-    "<p><span style='text-decoration: line-through double red;'>مقدمة</span>!</p>"
+    "<p>مقدمة</p>"
 )
 
 st.image("riyadh2.jpg", caption="Riyadh",width=1000)
 
-st.html(
-    "<h1>الفلل في الرياض </h1>"
-    "<p>مقدمة</p>"
-)
+
 st.html(
     "<h1>السؤال الاول ؟ </h1>"
     "<p>شرح</p>"
@@ -59,3 +56,18 @@ chart = alt.Chart(avg_price_rooms).mark_bar().encode(
 
 # Display the chart in Streamlit
 st.altair_chart(chart, use_container_width=True)
+
+
+map_chart = alt.Chart(df).mark_circle(size=100).encode(
+    longitude='longitude:Q',
+    latitude='latitude:Q',
+    color='price:Q',
+    tooltip=['location:N', 'price:Q']
+).properties(
+    title='Distribution of Room Prices by Location'
+).configure_view(
+    stroke=None
+)
+
+# Display the map in Streamlit
+st.altair_chart(map_chart, use_container_width=True)
