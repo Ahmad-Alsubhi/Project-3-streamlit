@@ -69,6 +69,8 @@ bar_chart = alt.Chart(avg_price_5_rooms).mark_bar().encode(
     title='Average Price for 5 Room Objects by Location',
     width=800,
     height=400
+).configure_axis(
+    labelAngle=45  # Rotate x-axis labels for better readability
 )
 st.altair_chart(bar_chart, use_container_width=True)
 
@@ -83,6 +85,8 @@ bar_chart = alt.Chart(avg_price_4_rooms).mark_bar().encode(
     title='Average Price for 4 Room Objects by Location',
     width=800,
     height=400
+).configure_axis(
+    labelAngle=45  # Rotate x-axis labels for better readability
 )
 st.altair_chart(bar_chart, use_container_width=True)
 
