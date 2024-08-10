@@ -5,9 +5,9 @@ import pandas as pd
 import numpy as np
 import altair as alt
 import matplotlib.pyplot as plt
-raw_url ='https://raw.githubusercontent.com/AbdullahSoli/Project-3-streamlit/main/cleaned_RiyadhVillasAqar2.csv'
+url ='https://raw.githubusercontent.com/AbdullahSoli/Project-3-streamlit/main/cleaned_RiyadhVillasAqar2.csv'
 #df= pd.read_csv('cleaned_RiyadhVillasAqar.csv')
-df= pd.read_csv(raw_url)
+df= pd.read_csv(url)
 st.write('Hello world!')
 st.write('Hello world!gjgjgjg')
 
@@ -18,14 +18,23 @@ st.html(
 )
 
 
+import plotly.graph_objects as go
+import streamlit as st
+
+# Assume df2 is your DataFrame and 'duplex' is the column of interest
 duplex_counts = df['duplex'].value_counts()
 
-# Create the pie chart
-fig, ax = plt.subplots(figsize=(8, 8))
-ax.pie(duplex_counts, labels=['Duplex', 'not Duplex'], autopct='%1.1f%%')
-ax.set_title('Distribution of Duplex Values')
-ax.axis('equal')  # Equal aspect ratio ensures that pie is circular.
+# Create the pie chart with Plotly
+fig = go.Figure(data=[go.Pie(labels=duplex_counts.index, values=duplex_counts.values, hole=0.3)])
 
+# Update layout for better appearance
+fig.update_layout(
+    title_text='Distribution of Duplex Values',
+    annotations=[dict(text='Duplex', x=0.5, y=0.5, font_size=20, showarrow=False)]
+)
+
+# Display the chart in a Streamlit app
+st.plotly_chart(fig)
 # Display the chart
 plt.show()
 
