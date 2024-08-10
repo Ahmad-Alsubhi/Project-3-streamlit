@@ -43,3 +43,19 @@ chart = alt.Chart(data).mark_arc().encode(
 
 
 st.altair_chart(chart, use_container_width=True)
+
+avg_price_rooms = df2.groupby('location')['price'].mean().reset_index()
+
+# Create the Altair bar chart
+chart = alt.Chart(avg_price_rooms).mark_bar().encode(
+    x=alt.X('location:N', title='Location'),
+    y=alt.Y('price:Q', title='Average Price'),
+    tooltip=['location:N', 'price:Q']
+).properties(
+    title='Average Price of Room Objects by Location'
+).configure_axis(
+    labelAngle=45  # Rotate x-axis labels for better readability
+)
+
+# Display the chart in Streamlit
+st.altair_chart(chart, use_container_width=True)
