@@ -18,8 +18,9 @@ st.html(
 )
 
 
-import plotly.graph_objects as go
+#import plotly.graph_objects as go
 import streamlit as st
+import plotly.express as go
 
 # Assume df2 is your DataFrame and 'duplex' is the column of interest
 duplex_counts = df['duplex'].value_counts()
