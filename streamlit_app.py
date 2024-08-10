@@ -143,3 +143,42 @@ pie_chart = alt.Chart(df_counts).mark_arc().encode(
 
 # عرض الرسم البياني في Streamlit
 st.altair_chart(pie_chart, use_container_width=True)
+
+
+
+
+
+
+
+property_counts = df['location'].value_counts().reset_index()
+property_counts.columns = ['location', 'count']
+
+
+top_10_locations = property_counts.head(10)
+donut_chart = alt.Chart(top_10_locations).mark_arc(innerRadius=100).encode(
+    theta=alt.Theta(field='count', type='quantitative', title='Count'),
+    color=alt.Color(field='location', type='nominal', title='Location'),
+    tooltip=['location:N', 'count:Q']  # عرض التفاصيل عند التفاعل مع القطاعات
+).properties(
+    title='اعلى عشر مناطق من حيث عدد العقارات',
+    width=400,
+    height=400
+).configure_arc(
+    outerRadius=150
+)
+
+# إنشاء رسم بياني شريطي (Bar Chart) باستخدام Altair
+bar_chart = alt.Chart(top_10_locations).mark_bar().encode(
+    x=alt.X('location:N', title='Location', sort='-y'),
+    y=alt.Y('count:Q', title='Count'),
+    color='location:N',
+    tooltip=['location:N', 'count:Q']  # عرض التفاصيل عند التفاعل مع الأعمدة
+).properties(
+    title='اعلى عشر مناطق من حيث عدد العقارات',
+    width=400,
+    height=300
+)
+
+# عرض الرسوم البيانية في Streamlit
+st.altair_chart(donut_chart, use_container_width=True)
+st.altair_chart(bar_chart, use_container_width=True)
