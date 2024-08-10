@@ -91,7 +91,7 @@ st.html(
     "<h1>السؤال الرابع ؟ </h1>"
     "<p>شرح</p>"
 )
-duplex_counts = df2['duplex'].value_counts().reset_index()
+duplex_counts = df['duplex'].value_counts().reset_index()
 duplex_counts.columns = ['duplex', 'count']
 pie_chart = alt.Chart(duplex_counts).mark_arc().encode(
     theta=alt.Theta(field='count', type='quantitative', title='Count'),
