@@ -1,7 +1,5 @@
 import streamlit as st
 import pandas as pd
-import streamlit as st
-import pandas as pd
 import numpy as np
 import altair as alt
 #import plotly.figure_factory as ff
@@ -19,14 +17,3 @@ st.html(
 )
 
 
-data = pd.DataFrame({
-    'labels': ['A', 'B', 'C', 'D'],
-    'sizes': [15, 30, 45, 10]
-})
-
-chart = alt.Chart(data).mark_arc().encode(
-    theta=alt.Theta(field='sizes', type='quantitative'),
-    color=alt.Color(field='labels', type='nominal')
-).properties(title='Pie Chart Example')
-
-chart.display()
