@@ -44,7 +44,7 @@ chart = alt.Chart(data).mark_arc().encode(
 
 st.altair_chart(chart, use_container_width=True)
 
-avg_price_rooms = df2.groupby('location')['price'].mean().reset_index()
+avg_price_rooms = df.groupby('location')['price'].mean().reset_index()
 
 # Create the Altair bar chart
 chart = alt.Chart(avg_price_rooms).mark_bar().encode(
