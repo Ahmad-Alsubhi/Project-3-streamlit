@@ -18,7 +18,7 @@ st.image("riyadh2.jpg", caption="Riyadh",width=1000)
 
 
 st.html(
-    "<h1>السؤال الاول ؟ </h1>"
+    "<h1>السؤال الاولععععععععع ؟ </h1>"
     "<p>شرح</p>"
 )
 data = pd.DataFrame({
