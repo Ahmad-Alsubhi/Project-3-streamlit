@@ -4,7 +4,7 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 import altair as alt
-import matplotlib.pyplot as plt
+#import matplotlib.pyplot as plt
 url ='https://raw.githubusercontent.com/AbdullahSoli/Project-3-streamlit/main/cleaned_RiyadhVillasAqar2.csv'
 #df= pd.read_csv('cleaned_RiyadhVillasAqar.csv')
 df= pd.read_csv(url)
