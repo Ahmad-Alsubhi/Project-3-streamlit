@@ -14,7 +14,7 @@ st.html(
     "<p><span style='text-decoration: line-through double red;'>مقدمة</span>!</p>"
 )
 
-st.image("riyadh.jpg", caption="Riyadh",width=1000)
+st.image("riyadh2.jpg", caption="Riyadh",width=1000)
 
 st.html(
     "<h1>الفلل في الرياض </h1>"
