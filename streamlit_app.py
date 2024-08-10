@@ -57,30 +57,23 @@ chart = alt.Chart(avg_price_rooms).mark_bar().encode(
 # Display the chart in Streamlit
 st.altair_chart(chart, use_container_width=True)
 
-import pydeck as pdk
-df = pd.DataFrame(data)
-
-# إنشاء الخريطة باستخدام Pydeck
-map_deck = pdk.Deck(
-    initial_view_state=pdk.ViewState(
-        latitude=df['latitude'].mean(),
-        longitude=df['longitude'].mean(),
-        zoom=12,  # مستوى تكبير الخريطة
-        pitch=0
-    ),
-    layers=[
-        pdk.Layer(
-            'ScatterplotLayer',
-            data=df,
-            get_position='[longitude, latitude]',
-            get_color='[255, 0, 0, 140]',  # لون النقاط مع الشفافية
-            get_radius='value * 10',  # حجم النقاط بناءً على القيمة
-            pickable=True,
-            auto_highlight=True
-        )
-    ],
-    tooltip={'text': '{location}\nValue: {value}'}  # عرض المعلومات عند المرور فوق النقاط
+base_map = alt.Chart(world).mark_geoshape().encode(
+    color=alt.value('lightgray')
+).properties(
+    width=800,
+    height=400
 )
 
+# إنشاء نقاط البيانات على الخريطة
+points = alt.Chart(df).mark_circle(size=100).encode(
+    longitude='longitude:Q',
+    latitude='latitude:Q',
+    color='value:Q',
+    tooltip=['location:N', 'value:Q']
+)
+
+# دمج الخريطة الأساسية مع نقاط البيانات
+map_chart = base_map + points
+
 # عرض الخريطة في Streamlit
-st.pydeck_chart(map_deck)
+st.altair_chart(map_chart, use_container_width=True)
